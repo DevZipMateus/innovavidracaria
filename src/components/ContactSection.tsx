@@ -50,7 +50,7 @@ const ContactSection = () => {
                     </div>
                     <div className="ml-3">
                       <h4 className="text-base font-medium">Endereço</h4>
-                      <p className="text-sm text-gray-600">Rua Tapuias Quadra 14 Lote 05</p>
+                      <p className="text-sm text-gray-600">Rua João Mosmann, 492, sala 7 segundo andar, centro parobé-RS</p>
                     </div>
                   </div>
                   
@@ -78,7 +78,7 @@ const ContactSection = () => {
                   <div className="w-full h-full rounded-lg overflow-hidden border border-gray-200">
                     <iframe 
                       title="Localização da Innova Vidraçaria"
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3837.734410722311!2d-48.0!3d-15.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTXCsDU0JzAwLjAiUyA0OMKwMDAnMDAuMCJX!5e0!3m2!1spt-BR!2sbr!4v1625000000000!5m2!1spt-BR!2sbr"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3467.7441339291095!2d-50.832453!3d-29.624809!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x951943326a652511%3A0xb99a3a756c306f67!2sR.%20Jo%C3%A3o%20Mosmann%2C%20492%20-%20Centro%2C%20Parob%C3%A9%20-%20RS%2C%2095630-000!5e0!3m2!1spt-BR!2sbr!4v1718391625424!5m2!1spt-BR!2sbr"
                       className="w-full h-full" 
                       style={{ border: 0 }} 
                       allowFullScreen 

@@ -69,7 +69,7 @@ const Footer = () => {
                   <MapPin className="h-3 w-3" />
                 </div>
                 <div>
-                  <p>Rua Tapuias Quadra 14 Lote 05</p>
+                  <p>Rua João Mosmann, 492, sala 7 segundo andar, centro parobé-RS</p>
                 </div>
               </li>
               <li className="flex items-start">

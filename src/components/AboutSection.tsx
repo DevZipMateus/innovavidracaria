@@ -19,7 +19,7 @@ const AboutSection = () => {
               <div className="relative z-10 rounded-2xl overflow-hidden shadow-xl">
                 <img 
                   src="https://images.unsplash.com/photo-1632755651421-cb1d33abf93d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" 
-                  alt="Nossa Equipe" 
+                  alt="Vidraçaria" 
                   className="w-full h-auto object-cover"
                 />
               </div>
