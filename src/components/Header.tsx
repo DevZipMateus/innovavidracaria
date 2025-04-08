@@ -58,6 +58,24 @@ const Header = () => {
     { name: 'Contato', href: '#contato' }
   ];
 
+  // Improved scroll handling for menu items
+  const handleMenuItemClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setIsMenuOpen(false); // Close mobile menu when clicked
+    
+    const targetId = href.substring(1);
+    const targetElement = document.getElementById(targetId);
+    
+    if (targetElement) {
+      setTimeout(() => {
+        window.scrollTo({
+          top: targetElement.offsetTop - 70,
+          behavior: 'smooth'
+        });
+      }, 100); // Small delay to ensure menu closes first
+    }
+  };
+
   return (
     <header 
       className={cn(
@@ -68,12 +86,12 @@ const Header = () => {
       )}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        {/* Logo */}
+        {/* Logo - Increased size */}
         <a href="#" className="flex items-center z-10 relative">
           <img 
             src="/public/lovable-uploads/0459b746-751f-4b5b-af87-86fbc5894863.png" 
             alt="Innova Vidraçaria Logo" 
-            className="h-10 md:h-12"
+            className="h-14 md:h-16" // Increased from h-10 md:h-12
           />
         </a>
 
@@ -83,6 +101,7 @@ const Header = () => {
             <a
               key={item.name}
               href={item.href}
+              onClick={(e) => handleMenuItemClick(e, item.href)}
               className={cn(
                 'text-sm font-medium relative inline-flex items-center transition-colors duration-200',
                 'hover:text-primary focus:text-primary',
@@ -154,7 +173,7 @@ const Header = () => {
                     href={item.href}
                     className="text-xl font-medium text-gray-800 hover:text-primary transition-all duration-200 block py-2 
                               hover:translate-x-1 hover:scale-[1.02] focus:outline-none focus:text-primary"
-                    onClick={() => setIsMenuOpen(false)}
+                    onClick={(e) => handleMenuItemClick(e, item.href)}
                   >
                     {item.name}
                   </a>

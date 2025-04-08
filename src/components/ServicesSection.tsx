@@ -29,6 +29,12 @@ const ServiceCard = ({ icon, title, description, image, className }: ServiceCard
           src={image} 
           alt={title} 
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            console.error(`Failed to load image: ${target.src}`);
+            // Fallback image if needed
+            // target.src = '/placeholder.svg';
+          }}
         />
       </div>
       <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-white/90 flex items-center justify-center shadow-lg">
@@ -48,19 +54,19 @@ const ServicesSection = () => {
       icon: <Maximize2 className="h-6 w-6 text-primary" />,
       title: 'Box Para Banheiro',
       description: 'Beleza e durabilidade em cada detalhe.',
-      image: 'public/lovable-uploads/afe30b0a-43c0-4688-84c3-8a19bb735191.png'
+      image: '/lovable-uploads/afe30b0a-43c0-4688-84c3-8a19bb735191.png'
     },
     {
       icon: <Grid3X3 className="h-6 w-6 text-primary" />,
       title: 'Guarda-corpo de vidro',
       description: 'Vantagens do uso: segurança e elegância.',
-      image: 'public/lovable-uploads/c28065be-df1d-4e9f-9e93-1880ace659e9.png'
+      image: '/lovable-uploads/c28065be-df1d-4e9f-9e93-1880ace659e9.png'
     },
     {
       icon: <ShowerHead className="h-6 w-6 text-primary" />,
       title: 'Vidro Temperado',
       description: 'Segurança e durabilidade para seu projeto.',
-      image: 'public/lovable-uploads/51e68671-5d84-4756-98fc-ff3218edd82f.png'
+      image: '/lovable-uploads/51e68671-5d84-4756-98fc-ff3218edd82f.png'
     },
   ];
 
@@ -69,19 +75,19 @@ const ServicesSection = () => {
       icon: <SlidersHorizontal className="h-6 w-6 text-primary" />,
       title: 'Forros PVC',
       description: 'Uma excelente opção para quem busca uma solução prática e estilosa em forro.',
-      image: 'public/lovable-uploads/8abd39c5-4192-45b7-ac85-6d91d909e3de.png'
+      image: '/lovable-uploads/8abd39c5-4192-45b7-ac85-6d91d909e3de.png'
     },
     {
       icon: <LayoutDashboard className="h-6 w-6 text-primary" />,
       title: 'Forro PVC Perfeitos',
       description: 'Acabamento impecável em cada projeto.',
-      image: 'public/lovable-uploads/6cfefaa5-2b70-4b47-a341-1668f3cc1e20.png'
+      image: '/lovable-uploads/6cfefaa5-2b70-4b47-a341-1668f3cc1e20.png'
     },
     {
       icon: <Shield className="h-6 w-6 text-primary" />,
       title: 'Fachadas de lojas',
       description: 'Soluções em vidro para comércios.',
-      image: 'public/lovable-uploads/4ad1e2f1-46b9-424e-86cc-015b9979fecd.png'
+      image: '/lovable-uploads/4ad1e2f1-46b9-424e-86cc-015b9979fecd.png'
     }
   ];
 

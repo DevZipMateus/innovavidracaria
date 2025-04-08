@@ -11,30 +11,31 @@ import WhatsAppButton from '@/components/WhatsAppButton';
 
 const Index = () => {
   useEffect(() => {
-    // Smooth scroll implementation
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
+    // Improved smooth scroll implementation with better mobile menu handling
+    const handleSmoothScroll = (e: MouseEvent) => {
+      const target = e.currentTarget as HTMLAnchorElement;
+      if (!target.hash) return;
+      
+      const targetId = target.hash.substring(1);
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
         e.preventDefault();
-        
-        const targetId = this.getAttribute('href')?.substring(1);
-        if (!targetId) return;
-        
-        const targetElement = document.getElementById(targetId);
-        if (!targetElement) return;
-
         window.scrollTo({
           top: targetElement.offsetTop - 70,
           behavior: 'smooth'
         });
-      });
+      }
+    };
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', handleSmoothScroll as EventListener);
     });
 
     // Clean up event listeners
     return () => {
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.removeEventListener('click', function (e) {
-          e.preventDefault();
-        });
+        anchor.removeEventListener('click', handleSmoothScroll as EventListener);
       });
     };
   }, []);
