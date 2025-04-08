@@ -2,6 +2,13 @@
 import { Maximize2, Grid3X3, SlidersHorizontal, LayoutDashboard, ShowerHead, Shield } from 'lucide-react';
 import AnimatedSection from './AnimatedSection';
 import { cn } from '@/lib/utils';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 interface ServiceCardProps {
   icon: React.ReactNode;
@@ -40,20 +47,20 @@ const ServicesSection = () => {
     {
       icon: <Maximize2 className="h-6 w-6 text-primary" />,
       title: 'Box Para Banheiro',
-      description: 'Box de vidro temperado para banheiros, com diversos modelos e acabamentos.',
-      image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'
+      description: 'Beleza e durabilidade em cada detalhe.',
+      image: 'public/lovable-uploads/afe30b0a-43c0-4688-84c3-8a19bb735191.png'
     },
     {
       icon: <Grid3X3 className="h-6 w-6 text-primary" />,
-      title: 'Espelhos',
-      description: 'Espelhos personalizados, em diversos tamanhos e acabamentos para todos os ambientes.',
-      image: 'https://images.unsplash.com/photo-1617103996702-96ff29b1c467?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2098&q=80'
+      title: 'Guarda-corpo de vidro',
+      description: 'Vantagens do uso: segurança e elegância.',
+      image: 'public/lovable-uploads/c28065be-df1d-4e9f-9e93-1880ace659e9.png'
     },
     {
       icon: <ShowerHead className="h-6 w-6 text-primary" />,
-      title: 'Portas de Vidro',
-      description: 'Portas de vidro temperado para ambientes internos e externos, com design personalizado.',
-      image: 'https://images.unsplash.com/photo-1549885606-e47f833cc01a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80'
+      title: 'Vidro Temperado',
+      description: 'Segurança e durabilidade para seu projeto.',
+      image: 'public/lovable-uploads/51e68671-5d84-4756-98fc-ff3218edd82f.png'
     },
   ];
 
@@ -61,20 +68,20 @@ const ServicesSection = () => {
     {
       icon: <SlidersHorizontal className="h-6 w-6 text-primary" />,
       title: 'Forros PVC',
-      description: 'Forros de PVC de alta qualidade, disponíveis em diversos modelos e cores.',
-      image: 'https://plus.unsplash.com/premium_photo-1686090086092-ed61e8600b9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'
+      description: 'Uma excelente opção para quem busca uma solução prática e estilosa em forro.',
+      image: 'public/lovable-uploads/8abd39c5-4192-45b7-ac85-6d91d909e3de.png'
     },
     {
       icon: <LayoutDashboard className="h-6 w-6 text-primary" />,
-      title: 'Divisórias PVC',
-      description: 'Divisórias de PVC para ambientes residenciais e comerciais, práticas e elegantes.',
-      image: 'https://images.unsplash.com/photo-1610099147395-4bca3a6aaa96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'
+      title: 'Forro PVC Perfeitos',
+      description: 'Acabamento impecável em cada projeto.',
+      image: 'public/lovable-uploads/6cfefaa5-2b70-4b47-a341-1668f3cc1e20.png'
     },
     {
       icon: <Shield className="h-6 w-6 text-primary" />,
-      title: 'Revestimentos PVC',
-      description: 'Revestimentos de PVC para paredes, tetos e divisórias, duráveis e fáceis de limpar.',
-      image: 'https://images.unsplash.com/photo-1518481852452-9415b262eba4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'
+      title: 'Fachadas de lojas',
+      description: 'Soluções em vidro para comércios.',
+      image: 'public/lovable-uploads/4ad1e2f1-46b9-424e-86cc-015b9979fecd.png'
     }
   ];
 
