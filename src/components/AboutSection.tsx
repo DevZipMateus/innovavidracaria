@@ -18,7 +18,7 @@ const AboutSection = () => {
             <div className="relative">
               <div className="relative z-10 rounded-2xl overflow-hidden shadow-xl">
                 <img 
-                  src="public/lovable-uploads/beeef57b-b0d3-44ab-9ab5-420c16e93a54.png" 
+                  src="/lovable-uploads/beeef57b-b0d3-44ab-9ab5-420c16e93a54.png" 
                   alt="Innova Vidraçaria" 
                   className="w-full h-auto object-contain bg-white p-4"
                 />

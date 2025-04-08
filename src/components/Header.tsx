@@ -89,7 +89,7 @@ const Header = () => {
         {/* Logo - Increased size */}
         <a href="#" className="flex items-center z-10 relative">
           <img 
-            src="/public/lovable-uploads/0459b746-751f-4b5b-af87-86fbc5894863.png" 
+            src="/lovable-uploads/0459b746-751f-4b5b-af87-86fbc5894863.png" 
             alt="Innova Vidraçaria Logo" 
             className="h-14 md:h-16" // Increased from h-10 md:h-12
           />
