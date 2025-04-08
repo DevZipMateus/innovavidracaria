@@ -69,7 +69,7 @@ const Header = () => {
     if (targetElement) {
       setTimeout(() => {
         window.scrollTo({
-          top: targetElement.offsetTop - 80, // Increased offset for better spacing
+          top: targetElement.offsetTop - 100, // Increased offset for better spacing
           behavior: 'smooth'
         });
       }, 100); // Small delay to ensure menu closes first
@@ -86,12 +86,12 @@ const Header = () => {
       )}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        {/* Logo - Increased size further */}
+        {/* Logo - Adjusted position and size */}
         <a href="#" className="flex items-center z-10 relative">
           <img 
             src="/lovable-uploads/0459b746-751f-4b5b-af87-86fbc5894863.png" 
             alt="Innova Vidraçaria Logo" 
-            className="h-16 md:h-20" // Further increased from h-14 md:h-16
+            className="h-14 md:h-18" 
           />
         </a>
 
@@ -146,7 +146,7 @@ const Header = () => {
           aria-hidden="true"
         />
 
-        {/* Mobile Menu Panel */}
+        {/* Mobile Menu Panel - Improved styling */}
         <div 
           className={cn(
             'fixed top-0 right-0 bottom-0 z-40 w-full max-w-sm bg-white shadow-xl',
@@ -189,6 +189,20 @@ const Header = () => {
                           transition-all duration-200 hover:translate-x-1 hover:scale-[1.02]"
               >
                 (61) 99638-1947
+              </a>
+              <a 
+                href="https://wa.me/5561996381947"
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="mt-4 flex items-center gap-3 text-lg text-green-600 hover:text-green-700 font-medium py-2
+                          transition-all duration-200 hover:translate-x-1 hover:scale-[1.02]"
+              >
+                <img 
+                  src="/lovable-uploads/929c3b44-6b2d-4abb-a124-bca574ea5e13.png" 
+                  alt="WhatsApp" 
+                  className="w-8 h-8" 
+                />
+                Fale pelo WhatsApp
               </a>
             </div>
           </nav>
