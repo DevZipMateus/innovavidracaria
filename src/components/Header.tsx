@@ -69,7 +69,7 @@ const Header = () => {
     if (targetElement) {
       setTimeout(() => {
         window.scrollTo({
-          top: targetElement.offsetTop - 70,
+          top: targetElement.offsetTop - 80, // Increased offset for better spacing
           behavior: 'smooth'
         });
       }, 100); // Small delay to ensure menu closes first
@@ -86,12 +86,12 @@ const Header = () => {
       )}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        {/* Logo - Increased size */}
+        {/* Logo - Increased size further */}
         <a href="#" className="flex items-center z-10 relative">
           <img 
             src="/lovable-uploads/0459b746-751f-4b5b-af87-86fbc5894863.png" 
             alt="Innova Vidraçaria Logo" 
-            className="h-14 md:h-16" // Increased from h-10 md:h-12
+            className="h-16 md:h-20" // Further increased from h-14 md:h-16
           />
         </a>
 

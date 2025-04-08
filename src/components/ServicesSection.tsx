@@ -32,8 +32,7 @@ const ServiceCard = ({ icon, title, description, image, className }: ServiceCard
           onError={(e) => {
             const target = e.target as HTMLImageElement;
             console.error(`Failed to load image: ${target.src}`);
-            // Fallback image if needed
-            // target.src = '/placeholder.svg';
+            target.src = '/placeholder.svg'; // Fallback image
           }}
         />
       </div>
@@ -54,19 +53,19 @@ const ServicesSection = () => {
       icon: <Maximize2 className="h-6 w-6 text-primary" />,
       title: 'Box Para Banheiro',
       description: 'Beleza e durabilidade em cada detalhe.',
-      image: '/lovable-uploads/afe30b0a-43c0-4688-84c3-8a19bb735191.png'
+      image: '/lovable-uploads/84f94f41-e0af-4fe3-8582-f0007dd9e42a.png'
     },
     {
       icon: <Grid3X3 className="h-6 w-6 text-primary" />,
       title: 'Guarda-corpo de vidro',
       description: 'Vantagens do uso: segurança e elegância.',
-      image: '/lovable-uploads/c28065be-df1d-4e9f-9e93-1880ace659e9.png'
+      image: '/lovable-uploads/06b9e1af-192a-467c-bf2a-81db47543e4a.png'
     },
     {
       icon: <ShowerHead className="h-6 w-6 text-primary" />,
       title: 'Vidro Temperado',
       description: 'Segurança e durabilidade para seu projeto.',
-      image: '/lovable-uploads/51e68671-5d84-4756-98fc-ff3218edd82f.png'
+      image: '/placeholder.svg'
     },
   ];
 
@@ -75,19 +74,19 @@ const ServicesSection = () => {
       icon: <SlidersHorizontal className="h-6 w-6 text-primary" />,
       title: 'Forros PVC',
       description: 'Uma excelente opção para quem busca uma solução prática e estilosa em forro.',
-      image: '/lovable-uploads/8abd39c5-4192-45b7-ac85-6d91d909e3de.png'
+      image: '/placeholder.svg'
     },
     {
       icon: <LayoutDashboard className="h-6 w-6 text-primary" />,
       title: 'Forro PVC Perfeitos',
       description: 'Acabamento impecável em cada projeto.',
-      image: '/lovable-uploads/6cfefaa5-2b70-4b47-a341-1668f3cc1e20.png'
+      image: '/placeholder.svg'
     },
     {
       icon: <Shield className="h-6 w-6 text-primary" />,
       title: 'Fachadas de lojas',
       description: 'Soluções em vidro para comércios.',
-      image: '/lovable-uploads/4ad1e2f1-46b9-424e-86cc-015b9979fecd.png'
+      image: '/placeholder.svg'
     }
   ];
 
