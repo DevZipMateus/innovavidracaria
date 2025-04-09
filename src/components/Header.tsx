@@ -11,6 +11,9 @@ const Header = () => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+    // When menu is toggled, we'll set a custom attribute on body
+    // that the WhatsAppButton can check
+    document.body.setAttribute('data-menu-open', (!isMenuOpen).toString());
   };
 
   useEffect(() => {
@@ -28,6 +31,7 @@ const Header = () => {
     const handleResize = () => {
       if (window.innerWidth >= 768 && isMenuOpen) {
         setIsMenuOpen(false);
+        document.body.setAttribute('data-menu-open', 'false');
       }
     };
     
@@ -64,6 +68,7 @@ const Header = () => {
   const handleMenuItemClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setIsMenuOpen(false); // Close mobile menu when clicked
+    document.body.setAttribute('data-menu-open', 'false');
     
     const targetId = href.substring(1);
     const targetElement = document.getElementById(targetId);
@@ -128,12 +133,18 @@ const Header = () => {
         {/* Mobile Menu Components */}
         <MobileMenuOverlay 
           isMenuOpen={isMenuOpen}
-          onClose={() => setIsMenuOpen(false)}
+          onClose={() => {
+            setIsMenuOpen(false);
+            document.body.setAttribute('data-menu-open', 'false');
+          }}
         />
 
         <MobileMenuPanel 
           isMenuOpen={isMenuOpen}
-          onClose={() => setIsMenuOpen(false)}
+          onClose={() => {
+            setIsMenuOpen(false);
+            document.body.setAttribute('data-menu-open', 'false');
+          }}
           menuItems={menuItems}
         />
       </div>
