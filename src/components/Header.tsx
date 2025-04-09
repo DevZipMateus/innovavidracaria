@@ -48,6 +48,7 @@ const Header = () => {
     
     window.addEventListener('resize', handleResize);
     
+    // Make sure to clean up on unmount
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleResize);

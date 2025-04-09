@@ -17,10 +17,8 @@ const WhatsAppButton = () => {
     };
 
     // Setup mutation observer to detect menu changes
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach(() => {
-        checkMenuStatus();
-      });
+    const observer = new MutationObserver(() => {
+      checkMenuStatus();
     });
 
     // Start observing the document for attribute changes
