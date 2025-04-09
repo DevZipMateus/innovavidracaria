@@ -39,17 +39,17 @@ const HeroSection = () => {
               </a>
             </div>
 
-            <div className="pt-8 flex items-center gap-8">
+            <div className="pt-8 flex flex-wrap justify-between sm:justify-start sm:flex-nowrap items-center gap-4 sm:gap-8">
               <div className="text-center">
                 <div className="text-3xl font-bold text-primary">+10</div>
                 <div className="text-sm text-gray-600">Anos de Experiência</div>
               </div>
-              <div className="h-12 w-px bg-gray-200"></div>
+              <div className="hidden sm:block h-12 w-px bg-gray-200"></div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-primary">100%</div>
                 <div className="text-sm text-gray-600">Personalizado</div>
               </div>
-              <div className="h-12 w-px bg-gray-200"></div>
+              <div className="hidden sm:block h-12 w-px bg-gray-200"></div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-primary">Premium</div>
                 <div className="text-sm text-gray-600">Qualidade</div>
