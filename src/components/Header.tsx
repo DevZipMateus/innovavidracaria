@@ -63,7 +63,7 @@ const Header = () => {
   return (
     <header 
       className={cn(
-        'fixed w-full z-50 transition-all duration-300 ease-in-out',
+        'fixed w-full z-50 transition-all duration-300 ease-in-out overflow-x-hidden',
         scrolled 
           ? 'bg-white/95 backdrop-blur-md shadow-sm py-3' 
           : 'bg-transparent py-4'
