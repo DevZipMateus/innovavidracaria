@@ -1,4 +1,3 @@
-
 import { Maximize2, Grid3X3, SlidersHorizontal, LayoutDashboard, ShowerHead, Shield } from 'lucide-react';
 import AnimatedSection from './AnimatedSection';
 import { cn } from '@/lib/utils';
@@ -24,11 +23,11 @@ const ServiceCard = ({ icon, title, description, image, className }: ServiceCard
       "rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl group relative bg-white",
       className
     )}>
-      <div className="h-48 overflow-hidden">
+      <div className="h-64 overflow-hidden">
         <img 
           src={image} 
           alt={title} 
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
           onError={(e) => {
             const target = e.target as HTMLImageElement;
             console.error(`Failed to load image: ${target.src}`);
@@ -36,11 +35,11 @@ const ServiceCard = ({ icon, title, description, image, className }: ServiceCard
           }}
         />
       </div>
-      <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-white/90 flex items-center justify-center shadow-lg">
-        {icon}
-      </div>
       <div className="p-6">
-        <h3 className="text-xl font-bold mb-3">{title}</h3>
+        <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
+          {icon}
+          {title}
+        </h3>
         <p className="text-gray-600">{description}</p>
       </div>
     </div>
