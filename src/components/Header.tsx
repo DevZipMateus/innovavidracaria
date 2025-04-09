@@ -10,10 +10,16 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-    // When menu is toggled, we'll set a custom attribute on body
-    // that the WhatsAppButton can check
-    document.body.setAttribute('data-menu-open', (!isMenuOpen).toString());
+    const newMenuState = !isMenuOpen;
+    setIsMenuOpen(newMenuState);
+    
+    // Dispatch custom event for other components to react to menu state changes
+    window.dispatchEvent(new CustomEvent('menu-state-change', { 
+      detail: { isOpen: newMenuState } 
+    }));
+    
+    // Prevent body scrolling when menu is open
+    document.body.style.overflow = newMenuState ? 'hidden' : '';
   };
 
   useEffect(() => {
@@ -31,7 +37,12 @@ const Header = () => {
     const handleResize = () => {
       if (window.innerWidth >= 768 && isMenuOpen) {
         setIsMenuOpen(false);
-        document.body.setAttribute('data-menu-open', 'false');
+        document.body.style.overflow = '';
+        
+        // Dispatch custom event for menu close
+        window.dispatchEvent(new CustomEvent('menu-state-change', { 
+          detail: { isOpen: false } 
+        }));
       }
     };
     
@@ -40,18 +51,6 @@ const Header = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleResize);
-    };
-  }, [isMenuOpen]);
-
-  // Prevent body scrolling when mobile menu is open
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    
-    return () => {
       document.body.style.overflow = '';
     };
   }, [isMenuOpen]);
@@ -67,8 +66,15 @@ const Header = () => {
   // Improved scroll handling for menu items
   const handleMenuItemClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    setIsMenuOpen(false); // Close mobile menu when clicked
-    document.body.setAttribute('data-menu-open', 'false');
+    
+    // Close menu first
+    setIsMenuOpen(false);
+    document.body.style.overflow = '';
+    
+    // Dispatch custom event for menu close
+    window.dispatchEvent(new CustomEvent('menu-state-change', { 
+      detail: { isOpen: false } 
+    }));
     
     const targetId = href.substring(1);
     const targetElement = document.getElementById(targetId);
@@ -76,10 +82,10 @@ const Header = () => {
     if (targetElement) {
       setTimeout(() => {
         window.scrollTo({
-          top: targetElement.offsetTop - 100, // Increased offset for better spacing
+          top: targetElement.offsetTop - 100,
           behavior: 'smooth'
         });
-      }, 100); // Small delay to ensure menu closes first
+      }, 300); // Longer delay to ensure menu closes completely first
     }
   };
 
@@ -133,18 +139,12 @@ const Header = () => {
         {/* Mobile Menu Components */}
         <MobileMenuOverlay 
           isMenuOpen={isMenuOpen}
-          onClose={() => {
-            setIsMenuOpen(false);
-            document.body.setAttribute('data-menu-open', 'false');
-          }}
+          onClose={toggleMenu}
         />
 
         <MobileMenuPanel 
           isMenuOpen={isMenuOpen}
-          onClose={() => {
-            setIsMenuOpen(false);
-            document.body.setAttribute('data-menu-open', 'false');
-          }}
+          onClose={toggleMenu}
           menuItems={menuItems}
         />
       </div>
