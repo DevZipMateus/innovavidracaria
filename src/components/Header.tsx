@@ -1,6 +1,5 @@
 
 import { useState, useEffect } from 'react';
-import { Menu } from 'lucide-react';
 import { cn } from "@/lib/utils";
 import MobileMenuButton from './header/MobileMenuButton';
 import MobileMenuOverlay from './header/MobileMenuOverlay';
@@ -94,7 +93,7 @@ const Header = () => {
           <img 
             src="/lovable-uploads/0459b746-751f-4b5b-af87-86fbc5894863.png" 
             alt="Innova Vidraçaria Logo" 
-            className="h-14 md:h-18" 
+            className="h-14 md:h-16" 
           />
         </a>
 
@@ -126,13 +125,12 @@ const Header = () => {
           scrolled={scrolled}
         />
 
-        {/* Mobile Menu Overlay */}
+        {/* Mobile Menu Components */}
         <MobileMenuOverlay 
           isMenuOpen={isMenuOpen}
           onClose={() => setIsMenuOpen(false)}
         />
 
-        {/* Mobile Menu Panel */}
         <MobileMenuPanel 
           isMenuOpen={isMenuOpen}
           onClose={() => setIsMenuOpen(false)}
