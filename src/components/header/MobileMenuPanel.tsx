@@ -5,7 +5,8 @@ import { MenuItem } from "./types";
 import {
   Sheet,
   SheetContent,
-  SheetClose
+  SheetClose,
+  SheetOverlay
 } from "@/components/ui/sheet";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
@@ -25,7 +26,6 @@ const MobileMenuPanel = ({
       <SheetContent 
         side="right" 
         className="p-0 border-none w-full sm:max-w-sm bg-[#1A1F2C] text-white"
-        overlayClassName="bg-black/80 backdrop-blur-sm"
       >
         <div className="flex items-center justify-end p-4">
           <SheetClose className="rounded-full p-2 border border-white/20 bg-transparent hover:bg-white/10">
