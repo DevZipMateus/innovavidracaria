@@ -79,7 +79,7 @@ const ServicesSection = () => {
       icon: <LayoutDashboard className="h-6 w-6 text-primary" />,
       title: 'Forro PVC Perfeitos',
       description: 'Acabamento impecável em cada projeto.',
-      image: '/lovable-uploads/forro PVC marrom.png'
+      image: '/lovable-uploads/forropvcmarrom.png'
     },
     {
       icon: <Shield className="h-6 w-6 text-primary" />,
