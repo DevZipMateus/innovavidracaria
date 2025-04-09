@@ -1,5 +1,5 @@
 
-import { X, Phone, WhatsApp } from "lucide-react";
+import { X, Phone, MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { MenuItem } from "./types";
 
@@ -72,7 +72,7 @@ const MobileMenuPanel = ({
             className="text-xl text-white hover:text-primary font-medium flex items-center gap-2 py-2 mt-2
             transition-all duration-200 hover:translate-x-1 hover:scale-[1.02]"
           >
-            <WhatsApp className="h-5 w-5" />
+            <MessageCircle className="h-5 w-5" />
             WhatsApp
           </a>
         </div>

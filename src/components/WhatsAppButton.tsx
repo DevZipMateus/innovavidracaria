@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { WhatsApp } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const WhatsAppButton = () => {
@@ -48,7 +48,7 @@ const WhatsAppButton = () => {
       )}
       aria-label="Contato via WhatsApp"
     >
-      <WhatsApp className="w-8 h-8 md:w-10 md:h-10 text-white" />
+      <MessageCircle className="w-8 h-8 md:w-10 md:h-10 text-white" />
     </a>
   );
 };
