@@ -1,7 +1,10 @@
 
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { cn } from "@/lib/utils";
+import MobileMenuButton from './header/MobileMenuButton';
+import MobileMenuOverlay from './header/MobileMenuOverlay';
+import MobileMenuPanel from './header/MobileMenuPanel';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -86,7 +89,7 @@ const Header = () => {
       )}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        {/* Logo - Adjusted position and size */}
+        {/* Logo */}
         <a href="#" className="flex items-center z-10 relative">
           <img 
             src="/lovable-uploads/0459b746-751f-4b5b-af87-86fbc5894863.png" 
@@ -117,96 +120,24 @@ const Header = () => {
         </nav>
 
         {/* Mobile Menu Button */}
-        <button 
-          onClick={toggleMenu} 
-          className={cn(
-            "md:hidden flex items-center justify-center rounded-full p-3 z-50",
-            "focus:outline-none transition-all duration-200",
-            "hover:scale-105 active:scale-95",
-            scrolled 
-              ? "bg-primary/10 text-primary hover:bg-primary/20"
-              : "bg-white/20 backdrop-blur-sm text-primary hover:bg-white/30"
-          )}
-          aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'}
-        >
-          {isMenuOpen ? (
-            <X className="h-7 w-7" />
-          ) : (
-            <Menu className="h-7 w-7" />
-          )}
-        </button>
-
-        {/* Mobile Menu Overlay */}
-        <div 
-          className={cn(
-            'fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300',
-            isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-          )}
-          onClick={() => setIsMenuOpen(false)}
-          aria-hidden="true"
+        <MobileMenuButton 
+          isMenuOpen={isMenuOpen} 
+          toggleMenu={toggleMenu} 
+          scrolled={scrolled}
         />
 
-        {/* Mobile Menu Panel - Improved styling */}
-        <div 
-          className={cn(
-            'fixed top-0 right-0 bottom-0 z-40 w-full max-w-sm bg-white shadow-xl',
-            'transform transition-transform duration-300 ease-in-out md:hidden',
-            isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-          )}
-        >
-          <div className="flex items-center justify-between p-6 border-b">
-            <div className="text-2xl font-bold text-primary">Innova Vidraçaria</div>
-            <button 
-              onClick={() => setIsMenuOpen(false)}
-              className="p-2 rounded-full hover:bg-gray-100 text-gray-500"
-              aria-label="Fechar menu"
-            >
-              <X className="h-6 w-6" />
-            </button>
-          </div>
+        {/* Mobile Menu Overlay */}
+        <MobileMenuOverlay 
+          isMenuOpen={isMenuOpen}
+          onClose={() => setIsMenuOpen(false)}
+        />
 
-          <nav className="px-6 pt-8 pb-8 overflow-y-auto h-[calc(100%-82px)]">
-            <ul className="space-y-5">
-              {menuItems.map((item) => (
-                <li key={item.name}>
-                  <a
-                    href={item.href}
-                    className="text-xl font-medium text-gray-800 hover:text-primary transition-all duration-200 block py-2 
-                              hover:translate-x-1 hover:scale-[1.02] focus:outline-none focus:text-primary"
-                    onClick={(e) => handleMenuItemClick(e, item.href)}
-                  >
-                    {item.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-12 pt-8 border-t border-gray-100">
-              <p className="text-md text-gray-500 mb-3">Entre em contato conosco</p>
-              <a 
-                href="tel:+5561996381947" 
-                className="text-xl text-primary hover:text-primary/80 font-medium block py-2
-                          transition-all duration-200 hover:translate-x-1 hover:scale-[1.02]"
-              >
-                (61) 99638-1947
-              </a>
-              <a 
-                href="https://wa.me/5561996381947"
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="mt-4 flex items-center gap-3 text-lg text-green-600 hover:text-green-700 font-medium py-2
-                          transition-all duration-200 hover:translate-x-1 hover:scale-[1.02]"
-              >
-                <img 
-                  src="/lovable-uploads/929c3b44-6b2d-4abb-a124-bca574ea5e13.png" 
-                  alt="WhatsApp" 
-                  className="w-8 h-8" 
-                />
-                Fale pelo WhatsApp
-              </a>
-            </div>
-          </nav>
-        </div>
+        {/* Mobile Menu Panel */}
+        <MobileMenuPanel 
+          isMenuOpen={isMenuOpen}
+          onClose={() => setIsMenuOpen(false)}
+          menuItems={menuItems}
+        />
       </div>
     </header>
   );
