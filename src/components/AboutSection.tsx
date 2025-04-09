@@ -1,10 +1,7 @@
-
 import { CheckCircle } from 'lucide-react';
 import AnimatedSection from './AnimatedSection';
-
 const AboutSection = () => {
-  return (
-    <section id="sobre" className="py-24 bg-white">
+  return <section id="sobre" className="bg-white py-0">
       <div className="section-container">
         <AnimatedSection>
           <h2 className="section-title">Sobre Nós</h2>
@@ -17,11 +14,7 @@ const AboutSection = () => {
           <AnimatedSection animation="slide-in-left">
             <div className="relative">
               <div className="relative z-10 rounded-2xl overflow-hidden shadow-xl">
-                <img 
-                  src="/lovable-uploads/beeef57b-b0d3-44ab-9ab5-420c16e93a54.png" 
-                  alt="Innova Vidraçaria" 
-                  className="w-full h-auto object-contain bg-white p-4"
-                />
+                <img src="/lovable-uploads/beeef57b-b0d3-44ab-9ab5-420c16e93a54.png" alt="Innova Vidraçaria" className="w-full h-auto object-contain bg-white p-4" />
               </div>
               
               <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-primary/10 rounded-full z-0"></div>
@@ -56,8 +49,6 @@ const AboutSection = () => {
           </AnimatedSection>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default AboutSection;
