@@ -8,30 +8,7 @@ const WhatsAppButton = () => {
   const whatsappUrl = `https://wa.me/${phoneNumber}`;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
-  // Check if mobile menu is open
   useEffect(() => {
-    const checkMenuStatus = () => {
-      // Check for data-sidebar attribute which we added to the mobile menu
-      const mobileMenuPanel = document.querySelector('[data-sidebar="sidebar"]');
-      setIsMenuOpen(!!mobileMenuPanel);
-    };
-
-    // Setup mutation observer to detect menu changes
-    const observer = new MutationObserver(() => {
-      checkMenuStatus();
-    });
-
-    // Start observing the document for attribute changes
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true,
-      attributes: true,
-      attributeFilter: ['data-sidebar']
-    });
-    
-    // Initial check
-    checkMenuStatus();
-    
     // Listen for custom event when menu state changes
     const handleMenuStateChange = (e: CustomEvent) => {
       setIsMenuOpen(e.detail.isOpen);
@@ -40,7 +17,6 @@ const WhatsAppButton = () => {
     window.addEventListener('menu-state-change', handleMenuStateChange as EventListener);
     
     return () => {
-      observer.disconnect();
       window.removeEventListener('menu-state-change', handleMenuStateChange as EventListener);
     };
   }, []);

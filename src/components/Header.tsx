@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react';
 import { cn } from "@/lib/utils";
 import MobileMenuButton from './header/MobileMenuButton';
-import MobileMenuOverlay from './header/MobileMenuOverlay';
 import MobileMenuPanel from './header/MobileMenuPanel';
 
 const Header = () => {
@@ -17,9 +16,13 @@ const Header = () => {
     window.dispatchEvent(new CustomEvent('menu-state-change', { 
       detail: { isOpen: newMenuState } 
     }));
-    
-    // Prevent body scrolling when menu is open
-    document.body.style.overflow = newMenuState ? 'hidden' : '';
+  };
+
+  const handleCloseMenu = () => {
+    setIsMenuOpen(false);
+    window.dispatchEvent(new CustomEvent('menu-state-change', { 
+      detail: { isOpen: false } 
+    }));
   };
 
   useEffect(() => {
@@ -36,13 +39,7 @@ const Header = () => {
     // Close menu when resizing from mobile to desktop
     const handleResize = () => {
       if (window.innerWidth >= 768 && isMenuOpen) {
-        setIsMenuOpen(false);
-        document.body.style.overflow = '';
-        
-        // Dispatch custom event for menu close
-        window.dispatchEvent(new CustomEvent('menu-state-change', { 
-          detail: { isOpen: false } 
-        }));
+        handleCloseMenu();
       }
     };
     
@@ -52,7 +49,6 @@ const Header = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleResize);
-      document.body.style.overflow = '';
     };
   }, [isMenuOpen]);
 
@@ -63,32 +59,6 @@ const Header = () => {
     { name: 'Nossos Valores', href: '#valores' },
     { name: 'Contato', href: '#contato' }
   ];
-
-  // Improved scroll handling for menu items
-  const handleMenuItemClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    
-    // Close menu first
-    setIsMenuOpen(false);
-    document.body.style.overflow = '';
-    
-    // Dispatch custom event for menu close
-    window.dispatchEvent(new CustomEvent('menu-state-change', { 
-      detail: { isOpen: false } 
-    }));
-    
-    const targetId = href.substring(1);
-    const targetElement = document.getElementById(targetId);
-    
-    if (targetElement) {
-      setTimeout(() => {
-        window.scrollTo({
-          top: targetElement.offsetTop - 100,
-          behavior: 'smooth'
-        });
-      }, 300); // Longer delay to ensure menu closes completely first
-    }
-  };
 
   return (
     <header 
@@ -115,7 +85,6 @@ const Header = () => {
             <a
               key={item.name}
               href={item.href}
-              onClick={(e) => handleMenuItemClick(e, item.href)}
               className={cn(
                 'text-sm font-medium relative inline-flex items-center transition-colors duration-200',
                 'hover:text-primary focus:text-primary',
@@ -132,20 +101,14 @@ const Header = () => {
 
         {/* Mobile Menu Button */}
         <MobileMenuButton 
-          isMenuOpen={isMenuOpen} 
           toggleMenu={toggleMenu} 
           scrolled={scrolled}
         />
 
-        {/* Mobile Menu Components */}
-        <MobileMenuOverlay 
-          isMenuOpen={isMenuOpen}
-          onClose={toggleMenu}
-        />
-
+        {/* Mobile Menu using Sheet */}
         <MobileMenuPanel 
           isMenuOpen={isMenuOpen}
-          onClose={toggleMenu}
+          onClose={handleCloseMenu}
           menuItems={menuItems}
         />
       </div>

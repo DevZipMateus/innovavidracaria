@@ -1,7 +1,12 @@
 
-import { X, Phone, MessageCircle } from "lucide-react";
+import { X, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { MenuItem } from "./types";
+import {
+  Sheet,
+  SheetContent,
+  SheetClose
+} from "@/components/ui/sheet";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface MobileMenuPanelProps {
@@ -16,72 +21,84 @@ const MobileMenuPanel = ({
   menuItems
 }: MobileMenuPanelProps) => {
   return (
-    <div 
-      className={cn(
-        'fixed top-0 right-0 bottom-0 z-50 w-full bg-gray-900 shadow-xl',
-        'transform transition-transform duration-300 ease-in-out md:hidden h-full', 
-        isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-      )}
-      data-sidebar={isMenuOpen ? "sidebar" : ""}
-    >
-      {/* Menu Header */}
-      <div className="flex items-center justify-end p-6">
-        <button 
-          onClick={onClose} 
-          className="p-3 rounded-full hover:bg-gray-800 text-white" 
-          aria-label="Fechar menu"
-        >
-          <X className="h-6 w-6" />
-        </button>
-      </div>
-
-      {/* Menu Items */}
-      <ScrollArea className="h-[calc(100vh-82px)] px-6">
-        <div className="pb-8">
-          <ul className="space-y-6">
-            {menuItems.map(item => (
-              <li key={item.name}>
-                <a 
-                  href={item.href} 
-                  className="text-2xl font-medium text-white hover:text-primary transition-all duration-200 block py-3 
-                  hover:translate-x-1 hover:scale-[1.02] focus:outline-none focus:text-primary" 
-                  onClick={onClose}
-                >
-                  {item.name}
-                </a>
-              </li>
-            ))}
-          </ul>
-
-          {/* Contact Info */}
-          <div className="mt-16 pt-8 border-t border-gray-700">
-            <p className="text-md text-gray-400 mb-4">Entre em contato conosco</p>
-            
-            {/* Phone number with icon */}
-            <a 
-              href="tel:+5561996381947" 
-              className="text-xl text-white hover:text-primary font-medium flex items-center gap-2 py-2
-              transition-all duration-200 hover:translate-x-1 hover:scale-[1.02]"
-            >
-              <Phone className="h-5 w-5" />
-              (61) 99638-1947
-            </a>
-            
-            {/* WhatsApp with icon */}
-            <a 
-              href="https://wa.me/5561996381947" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xl text-white hover:text-primary font-medium flex items-center gap-2 py-2 mt-2
-              transition-all duration-200 hover:translate-x-1 hover:scale-[1.02]"
-            >
-              <MessageCircle className="h-5 w-5" />
-              WhatsApp
-            </a>
-          </div>
+    <Sheet open={isMenuOpen} onOpenChange={onClose}>
+      <SheetContent 
+        side="right" 
+        className="p-0 border-none w-full sm:max-w-sm bg-[#1A1F2C] text-white"
+        overlayClassName="bg-black/80 backdrop-blur-sm"
+      >
+        <div className="flex items-center justify-end p-4">
+          <SheetClose className="rounded-full p-2 border border-white/20 bg-transparent hover:bg-white/10">
+            <X className="h-5 w-5 text-white" />
+            <span className="sr-only">Fechar</span>
+          </SheetClose>
         </div>
-      </ScrollArea>
-    </div>
+        
+        <ScrollArea className="h-[calc(100vh-80px)]">
+          <div className="px-4 pb-8">
+            <ul className="divide-y divide-white/10">
+              {menuItems.map(item => (
+                <li key={item.name}>
+                  <a 
+                    href={item.href} 
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onClose();
+                      
+                      // Smooth scroll with delay for mobile
+                      const targetId = item.href.substring(1);
+                      const targetElement = document.getElementById(targetId);
+                      
+                      if (targetElement) {
+                        setTimeout(() => {
+                          window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                          });
+                        }, 300);
+                      }
+                    }} 
+                    className="flex items-center justify-between py-4 text-lg font-medium text-white hover:text-primary transition-colors"
+                  >
+                    {item.name}
+                    <ChevronRight className="h-5 w-5 text-white/70" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            {/* Contact Info */}
+            <div className="mt-12 pt-6 border-t border-white/10">
+              <p className="text-md text-gray-400 mb-5">Entre em contato conosco</p>
+              
+              {/* Phone number with icon */}
+              <a 
+                href="tel:+5561996381947" 
+                className="flex items-center gap-3 py-3 text-white hover:text-primary transition-colors"
+              >
+                <div className="bg-primary/10 p-2 rounded-full">
+                  <span className="block h-5 w-5 text-primary">📞</span>
+                </div>
+                <span className="text-lg">(61) 99638-1947</span>
+              </a>
+              
+              {/* WhatsApp with icon */}
+              <a 
+                href="https://wa.me/5561996381947" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 py-3 text-white hover:text-primary transition-colors"
+              >
+                <div className="bg-green-500/10 p-2 rounded-full">
+                  <span className="block h-5 w-5 text-green-500">💬</span>
+                </div>
+                <span className="text-lg">WhatsApp</span>
+              </a>
+            </div>
+          </div>
+        </ScrollArea>
+      </SheetContent>
+    </Sheet>
   );
 };
 
