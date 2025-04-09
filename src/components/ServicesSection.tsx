@@ -53,19 +53,19 @@ const ServicesSection = () => {
       icon: <Maximize2 className="h-6 w-6 text-primary" />,
       title: 'Box Para Banheiro',
       description: 'Beleza e durabilidade em cada detalhe.',
-      image: '/lovable-uploads/84f94f41-e0af-4fe3-8582-f0007dd9e42a.png'
+      image: '/lovable-uploads/boxvidro.png'
     },
     {
       icon: <Grid3X3 className="h-6 w-6 text-primary" />,
       title: 'Guarda-corpo de vidro',
       description: 'Vantagens do uso: segurança e elegância.',
-      image: '/lovable-uploads/06b9e1af-192a-467c-bf2a-81db47543e4a.png'
+      image: '/lovable-uploads/guardacorpo.png'
     },
     {
       icon: <ShowerHead className="h-6 w-6 text-primary" />,
       title: 'Vidro Temperado',
       description: 'Segurança e durabilidade para seu projeto.',
-      image: '/placeholder.svg'
+      image: '/lovable-uploads/vidrotemperado.png'
     },
   ];
 
@@ -74,19 +74,19 @@ const ServicesSection = () => {
       icon: <SlidersHorizontal className="h-6 w-6 text-primary" />,
       title: 'Forros PVC',
       description: 'Uma excelente opção para quem busca uma solução prática e estilosa em forro.',
-      image: '/placeholder.svg'
+      image: '/lovable-uploads/forropvc.png'
     },
     {
       icon: <LayoutDashboard className="h-6 w-6 text-primary" />,
       title: 'Forro PVC Perfeitos',
       description: 'Acabamento impecável em cada projeto.',
-      image: '/placeholder.svg'
+      image: '/lovable-uploads/forro PVC marrom.png'
     },
     {
       icon: <Shield className="h-6 w-6 text-primary" />,
       title: 'Fachadas de lojas',
       description: 'Soluções em vidro para comércios.',
-      image: '/placeholder.svg'
+      image: '/lovable-uploads/lojas.png'
     }
   ];
 
